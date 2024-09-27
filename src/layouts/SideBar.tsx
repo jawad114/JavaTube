@@ -3,17 +3,21 @@ import SmallSideBar from '../components/SmallSideBar'
 import { Clapperboard, Gamepad, History, Home, Library, LibraryBig, LibraryIcon, MoreHorizontal, Newspaper, Play, Repeat, ThumbsUpIcon, TrendingUp, VideoIcon, Watch } from 'lucide-react'
 import LargeSideBarSection from '../components/LargeSideBarSection'
 import LargeSideBarItems from '../components/LargeSideBarItems'
-function SideBar() {
+function SideBar({isSidebarCollapsed}: {isSidebarCollapsed: boolean}) {
   return (
     <>
-    <aside className='sticky top-0 overflow-y-auto scrollbar-hidden pb-4 flex flex-col ml-1 lg:hidden'>
-      <SmallSideBar Icon={Home} title="Home" url="/"/>
-      <SmallSideBar Icon={Repeat} title="Shorts" url="/"/>
+   <aside className={`sticky top-0 overflow-y-auto pb-4 flex-col ml-1 ${isSidebarCollapsed ? 'lg:flex' : 'lg:hidden'} hidden`}>
+        <SmallSideBar Icon={Home} title="Home" url="/" />
+        <SmallSideBar Icon={Repeat} title="Shorts" url="/" />
       <SmallSideBar Icon={Clapperboard} title="Subscriptions" url="/"/>
       <SmallSideBar Icon={Library} title="Library" url="/"/>
+      <SmallSideBar Icon={History} title="Home" url="/"/>
+      <SmallSideBar Icon={Watch} title="Watch later" url="/"/>
+      <SmallSideBar Icon={TrendingUp} title="Trending" url="/"/>
+      <SmallSideBar Icon={MoreHorizontal} title="Show more" url="/"/>
     </aside>
 
-    <aside className="w-56 lg:sticky lg:block hidden absolute top-0 overflow-y-auto scrollbar-hidden pb-4 flex-col gap-2 px-2">
+    <aside className={`w-56 lg:sticky lg:block absolute top-0 overflow-y-auto pb-4 flex-col gap-2 px-2 ${isSidebarCollapsed ? 'lg:hidden' : 'lg:flex'} hidden`}>
   <LargeSideBarSection>
     <LargeSideBarItems Icon={Home} title="Home" url="/" isActive={true} />
     <LargeSideBarItems Icon={Repeat} title="Shorts" url="/" isActive={false} />

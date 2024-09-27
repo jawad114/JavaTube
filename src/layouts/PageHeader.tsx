@@ -2,12 +2,12 @@ import React from 'react'
 import {ArrowLeft, Bell, Menu, Mic, Search, Upload, User} from 'lucide-react'
 import Button from '../components/Button'
 import { useState } from 'react'
-function PageHeader() {
+function PageHeader({ toggleSidebar }: { toggleSidebar: () => void }) {
     const [showFullWidthSearch, setShowFullWidthSearch] = React.useState(false)
   return (
     <div className='flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4'>
         <div className={`flex gap-4 items-center flex-shrink-0 ${showFullWidthSearch ? 'hidden' : 'flex' } `}>
-            <Button variant="ghost" size="icon"   className='w-16 h-16 mt-3 bg-slate-200'><Menu  /></Button>
+            <Button variant="ghost" size="icon"   className='w-16 h-16 mt-3 bg-slate-200' onClick={toggleSidebar}><Menu  /></Button>
             <a href="/home"><img src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt="logo" className='w-16 h-16 mt-3' /></a>
         </div>
         <form className={`'gap-4 flex-grow justify-center ${showFullWidthSearch ? 'flex' : 'hidden md:flex  ' } `}>
